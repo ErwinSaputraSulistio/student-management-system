@@ -29,7 +29,7 @@ const Edit = () => {
     return(
         <>
             <button onClick={ 
-                () => { navigate("/") } 
+                () => { navigate("/student") } 
             }>Back</button>
             <form onSubmit={ (event) => { updateStudentDataById(event, getState) } }>
                 <InputAndLabel

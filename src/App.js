@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { GlobalContextProvider } from "./common-module/context/GlobalContext"
 import AppRouter from "./common-module/config/router"
+import 'bootstrap/dist/css/bootstrap.min.css'
 import "./App.css"
 
 const App = () => {

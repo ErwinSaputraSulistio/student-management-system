@@ -68,4 +68,41 @@ const removeStudentDataById = (studentId, studentDataGlobalContext, setStudentDa
     setStudentDataGlobalContext(getAllDataExceptTheRemovedOne)
 }
 
-export { submitNewStudentForm, getStudentDataById, updateStudentDataById, removeStudentDataById }
+const checkRowsToBeRemoved = (event, multipleRowsSelected, setMultipleRowsSelected) => {
+    const idValue = event.target.value
+    const isIdAlreadyExists = multipleRowsSelected.includes(idValue)
+    if(!isIdAlreadyExists) {
+        setMultipleRowsSelected([...multipleRowsSelected, idValue])
+    }
+    else {
+        const removeIdFromArray = multipleRowsSelected.filter((id) => { return parseInt(id) !== parseInt(idValue) })
+        setMultipleRowsSelected(removeIdFromArray)
+    }
+}
+
+const removeCheckedStudentRows = (
+    multipleRowsSelected, studentDataGlobalContext, setStudentDataGlobalContext,
+    setIsRemovingMultipleRows, setMultipleRowsSelected
+) => {
+    if(multipleRowsSelected.length > 0) {
+        const uncheckedStudentData = studentDataGlobalContext.filter((data) => !multipleRowsSelected.includes(data.id))
+        // const uncheckAllCheckboxes = () => {
+        //     let inputs = document.getElementsByTagName('input')
+        //     for (let i = 0; i < inputs.length; i++)  {
+        //         if (inputs[i].type === 'checkbox')   {
+        //             inputs[i].checked = false
+        //         }
+        //     }
+        // }
+        setStudentDataGlobalContext(uncheckedStudentData)
+        setMultipleRowsSelected([])
+        setIsRemovingMultipleRows(false)
+        // uncheckAllCheckboxes()
+    }
+    else { alert("Failed to remove, please select at least one students to process further!") }
+}
+
+export { 
+    submitNewStudentForm, getStudentDataById, updateStudentDataById, 
+    removeStudentDataById, checkRowsToBeRemoved, removeCheckedStudentRows
+}

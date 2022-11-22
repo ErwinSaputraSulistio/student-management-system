@@ -11,12 +11,19 @@ const LocalContextProvider = ({ children }) => {
         graduationYear: ""  
     })
     const [studentIdLocalContext, setStudentIdLocalContext] = useState(null)
+    const [multipleRowsSelected, setMultipleRowsSelected] = useState([])
+    const [isRemovingMultipleRows, setIsRemovingMultipleRows] = useState(false)
+
     return(
         <LocalContext.Provider value={{ 
             localContext, 
             setLocalContext,
             studentIdLocalContext,
-            setStudentIdLocalContext
+            setStudentIdLocalContext,
+            multipleRowsSelected,
+            setMultipleRowsSelected,
+            isRemovingMultipleRows,
+            setIsRemovingMultipleRows,
         }}>
             { children }
         </LocalContext.Provider>

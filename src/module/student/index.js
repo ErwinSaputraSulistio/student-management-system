@@ -3,7 +3,7 @@ import DefaultTemplate from "../../common-module/component/DefaultTemplate"
 import HocProvider from "./HocProvider"
 import Add from "./component/Add"
 import Edit from "./component/Edit"
-import List from "./component/List"
+import Main from "./component/Main"
 
 const Student = () => {
     const [searchParams] = useSearchParams()
@@ -17,7 +17,7 @@ const Student = () => {
                 :
                 action === "edit" ? <Edit/>
                 :
-                <List/>
+                <Main/>
             }
         </DefaultTemplate>
     )

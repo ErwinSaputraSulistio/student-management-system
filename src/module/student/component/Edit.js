@@ -5,6 +5,7 @@ import { GlobalContext } from "../../../common-module/context/GlobalContext"
 import { LocalContext } from "../context/LocalContext"
 import InputAndLabel from "../../../common-module/component/InputAndLabel"
 import { getStudentDataById, updateStudentDataById } from "../controller/Controller"
+import Button from "react-bootstrap/Button"
 
 const Edit = () => {
     const { studentDataGlobalContext } = useContext(GlobalContext)
@@ -28,10 +29,7 @@ const Edit = () => {
     }, [])
     return(
         <>
-            <button onClick={ 
-                () => { navigate("/student") } 
-            }>Back</button>
-            <form onSubmit={ (event) => { updateStudentDataById(event, getState) } }>
+            <form className="mt-4" onSubmit={ (event) => { updateStudentDataById(event, getState) } }>
                 <InputAndLabel
                     onChange={ (event) => { changeInput(event, "name") } }
                     label="Name :"
@@ -60,7 +58,8 @@ const Edit = () => {
                     type="number"
                     value={ localContext.graduationYear }
                 />
-                <button type="submit">Submit</button>
+                <Button className="mt-4 mb-2 p-2" variant="success" type="submit">Submit</Button>
+                <Button className="p-2" variant="danger" onClick={ () => { navigate("/student") } }>Back</Button>
             </form>
         </>
     )
